@@ -110,6 +110,10 @@ install(
     COMPONENT tinyxml2_development
 )
 
+if(MSVC)
+    install(FILES ${CMAKE_BINARY_DIR}/Debug/tinyxml2.pdb DESTINATION $<IF:$<BOOL:${BUILD_SHARED_LIBS}>,${CMAKE_INSTALL_BINDIR},${CMAKE_INSTALL_LIBDIR}> CONFIGURATIONS Debug)
+endif(MSVC)
+
 ## Headers
 
 install(
