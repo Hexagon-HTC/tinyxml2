@@ -72,7 +72,7 @@ distribution.
 #   else
 #       define TINYXML2_LIB
 #   endif
-#elif __GNUC__ >= 4
+#elif __GNUC__ >= 4 && defined TINYXML2_EXPORT
 #   define TINYXML2_LIB __attribute__((visibility("default")))
 #else
 #   define TINYXML2_LIB

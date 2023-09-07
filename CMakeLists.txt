@@ -28,15 +28,15 @@ target_include_directories(tinyxml2 PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SO
 
 target_compile_definitions(
     tinyxml2
-    PUBLIC $<$<CONFIG:Debug>:TINYXML2_DEBUG>
+    PUBLIC $<$<CONFIG:Debug>:TINYXML2_DEBUG> $<$<BOOL:${BUILD_SHARED_LIBS}>:TINYXML2_EXPORT>
     INTERFACE $<$<BOOL:${BUILD_SHARED_LIBS}>:TINYXML2_IMPORT>
     PRIVATE $<$<CXX_COMPILER_ID:MSVC>:_CRT_SECURE_NO_WARNINGS>
 )
 
+
 set_target_properties(
     tinyxml2
     PROPERTIES
-    DEFINE_SYMBOL "TINYXML2_EXPORT"
     VERSION "${tinyxml2_VERSION}"
     SOVERSION "${tinyxml2_VERSION_MAJOR}"
 )
